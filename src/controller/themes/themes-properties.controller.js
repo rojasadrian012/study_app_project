@@ -93,6 +93,22 @@ const eliminar = async function(req, res) {
     
 };
 
+const buscarPorThemeId = async function(req, res) {
+    try {
+        const theme_id = req.params.theme_id;
+        const results = await ThemeService.buscarThemeIdServ(theme_id);
+        res.status(200).json({
+            success: true,
+            data: results
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+};
+
 module.exports = {
-    listar, Consultarid, actualizar, eliminar
+    listar, Consultarid, actualizar, eliminar, buscarPorThemeId
 };

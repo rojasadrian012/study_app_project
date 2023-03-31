@@ -8,8 +8,10 @@ module.exports = function(app) {
     app.post("/themes/update", themesController.actualizar);
     app.delete("/themes/delete/:id", themesController.eliminar);
     
+    //themes-properties
     app.get("/themes-properties/list", themesPropietiesController.listar);
     app.get("/theme-propertie/:id", themesPropietiesController.Consultarid);
     app.post("/themes-properties/update", themesPropietiesController.actualizar);
     app.delete("/themes-properties/delete/:id", themesPropietiesController.eliminar);
+    app.get("/themes_properties/theme/:theme_id", themesPropietiesController.buscarPorThemeId);
 }

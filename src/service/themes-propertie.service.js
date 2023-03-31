@@ -78,6 +78,22 @@ const eliminarServ = async function(txtid) {
     
 };
 
+const buscarThemeIdServ = async function(theme_id) {
+    console.log("Buscar por theme_id");
+    try {
+        const results = await ThemePropertieModel.findAll({ where: { theme_id: theme_id } });
+
+        if (results && results.length > 0) {
+            return results;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
 module.exports = {
-    listarServ, ConsultaridServ, actualizarServ, eliminarServ
+    listarServ, ConsultaridServ, actualizarServ, eliminarServ, buscarThemeIdServ
 };
