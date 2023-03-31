@@ -28,7 +28,7 @@ const ConsultaridServ = async function(txtid) {
         const Result = await ThemeModel.findByPk(txtid);
 
         if(Result){
-            return Result[0];
+            return Result;
         }else{
             return [];
         }
@@ -69,7 +69,7 @@ const actualizarServ = async function(id, create_date, name, description, keywor
 const eliminarServ = async function(txtid) {
     console.log("eliminar tema Service");
     try{
-        await ThemeModel.destroy(txtid);
+        await ThemeModel.destroy({ where: { id: txtid } })
         console.log("Tema eliminado Service");
     } catch(error) {
         console.log(error);

@@ -1,4 +1,4 @@
-const { json } = require("sequelize");
+const { json, where } = require("sequelize");
 const { ThemePropertieModel } = require("../model/theme-propertie.model");
 const {sequelize} = require("../connection");
 
@@ -69,7 +69,7 @@ const actualizarServ = async function(id, theme_id, property_name, property_valu
 const eliminarServ = async function(txtid) {
     console.log("eliminar tema Service");
     try{
-        await ThemePropertieModel.destroy(txtid);
+        await ThemePropertieModel.destroy({ where: { id: txtid } })
         console.log("Tema eliminado Service");
     } catch(error) {
         console.log(error);

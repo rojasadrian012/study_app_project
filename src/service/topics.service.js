@@ -28,7 +28,7 @@ const ConsultaridServ = async function(txtid) {
         const Result = await TopicModel.findByPk(txtid);
 
         if(Result){
-            return Result[0];
+            return Result;
         }else{
             return [];
         }
@@ -68,15 +68,15 @@ const actualizarServ = async function(id, create_date, name, topic_id, order, pr
 
 const eliminarServ = async function(txtid) {
     console.log("eliminar topicos Service");
-    try{
-        await TopicModel.destroy(txtid);
+    try {
+        await TopicModel.destroy({ where: { id: txtid } });
         console.log("topico eliminado Service");
-    } catch(error) {
+    } catch (error) {
         console.log(error);
         throw error;
     }
-    
 };
+
 
 module.exports = {
     listarServ, ConsultaridServ, actualizarServ, eliminarServ
